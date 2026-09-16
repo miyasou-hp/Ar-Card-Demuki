@@ -33,7 +33,7 @@
       device-orientation-permission-ui="enabled: false">
       
       <a-assets>
-        <!-- 3つの透過画像を読み込み（必ずPNG形式でアップロードしてください） -->
+        <!-- 透過PNG画像アセット -->
         <img id="car-img" src="./demuki.png">
         <img id="bubble-img" src="./logo.png">
         <img id="youtube-img" src="./youtube.png">
@@ -41,10 +41,10 @@
 
       <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable"></a-camera>
 
-      <!-- targetIndex: 0 はDEMUKIロゴ画像に対応 -->
+      <!-- targetIndex: 0 はTEAM DEMUKIロゴ・名刺面に対応 -->
       <a-entity mindar-image-target="targetIndex: 0">
         
-        <!-- 1. 床面（影）：名刺の上にペタッと寝かせる -->
+        <!-- 1. 床面（影）：名刺の上に水平に配置 -->
         <a-circle 
           position="0 0 0.01" 
           rotation="-90 0 0" 
@@ -53,45 +53,42 @@
           material="opacity: 0.25; transparent: true">
         </a-circle>
 
-        <!-- 2. 車両 (demuki.png)：地面に対して直立・少し上向き -->
+        <!-- 2. 車両 (demuki.png)：中央接地・見下ろし用にわずかに上向き傾斜 -->
         <a-image 
           id="car-model"
           src="#car-img" 
           position="0 0.35 0.05" 
           rotation="-10 0 0" 
-          width="1.3" 
-          height="0.8">
+          width="1.2" 
+          height="0.74">
         </a-image>
 
-        <!-- 3. フキダシ (logo.png)：車の右斜め前・上に配置 -->
-        <!-- リンク先：DEMUKI公式サイト -->
-        <!-- アニメーションでフワフワ上下に動かして目立たせます -->
+        <!-- 3. フキダシ (logo.png)：左上配置（しっぽが右下の車を指す導線） -->
         <a-image 
           id="website-btn"
           src="#bubble-img" 
-          position="0.7 0.8 0.15" 
+          position="-0.45 0.75 0.1" 
           rotation="0 0 0" 
-          width="0.8" 
-          height="0.45"
+          width="0.65" 
+          height="0.36"
           data-url="https://demuki.jp/"
           link-handler
           class="clickable"
-          animation="property: position; to: 0.7 0.85 0.15; dur: 1200; easing: easeInOutQuad; loop: true; dir: alternate">
+          animation="property: position; to: -0.45 0.78 0.1; dur: 1200; easing: easeInOutQuad; loop: true; dir: alternate">
         </a-image>
 
-        <!-- 4. YouTube (youtube.png)：車の左斜め後ろ・上に配置 -->
-        <!-- リンク先：YouTube紹介動画 -->
+        <!-- 4. YouTube (youtube.png)：右上配置（フキダシと高さを揃えて並列配置） -->
         <a-image 
           id="youtube-btn"
           src="#youtube-img" 
-          position="-0.7 0.7 0.0" 
+          position="0.45 0.75 0.1" 
           rotation="0 0 0" 
-          width="0.6" 
-          height="0.18"
+          width="0.5" 
+          height="0.15"
           data-url="https://www.youtube.com/watch?v=xkJmBgriu2w"
           link-handler
           class="clickable"
-          animation="property: position; to: -0.7 0.75 0.0; dur: 1200; easing: easeInOutQuad; loop: true; dir: alternate">
+          animation="property: position; to: 0.45 0.78 0.1; dur: 1200; easing: easeInOutQuad; loop: true; dir: alternate">
         </a-image>
 
       </a-entity>
